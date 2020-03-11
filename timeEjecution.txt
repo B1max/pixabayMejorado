@@ -1,0 +1,66 @@
+Tiempos de ejecucion :
+
+Con estos datos
+        nIptico = 10
+        imagenesEntotal = 30
+        descargasEnSimultaneo = 5
+        efectosEnSimultaneo = 4
+        nIpticosEnSimultaneo = 3
+	efectosAplicados = ["contraste","rotacion","redimencion","escalagris"]
+
+ingrese (1) para modo Automatico / (2)-para modo manual parametrizado:1
+17:51:14.738 [Thread-1] - ----Descarga iniciada url:https://pixabay.com/get/57e1d14a4256ad14f6da8c7dda79367b163edee255556c
+17:52:05.751 [Thread-36] - concatenar terminado
+
+este programa demora 57 seg(aprox) en ejecutarse 
+
+
+Que ocurrira si cambiamos esto descargasEnSimultaneo = 30 <-----
+y efectosEnSimultaneo = 3 <------
+
+18:01:27.659 [Thread-1] - ----Descarga iniciada url:https://pixabay.com/get/57e1d14a4256ad14f6da8c7dda79367b163edee255556c48702778d19545c150b0_1280.jpg
+18:02:14.913 [Thread-36] - concatenar terminado
+
+como se puede apreciar haciendo estos cambios tarda 47 seg (aprox)
+
+aplicando estos cambios al programa:
+        query ="perros"
+        nIptico = 5
+        imagenesEntotal = 5
+        descargasEnSimultaneo = 5
+        #si sobrepasa los 5 efectos en simultaneo se va de memoria..
+        efectosEnSimultaneo = 5 
+        nIpticosEnSimultaneo = 1
+        rotacion = 20
+        ancho = 500
+        alto = 500
+
+18:04:21.851 [Thread-1] - ----Descarga iniciada url:https://pixabay.com/get/57e1d14a4256ad14f6da8c7dda79367b163edee255556c48702778d19545c35eba_1280.jpg
+18:04:37.362 [Thread-11] - concatenar terminado
+
+Demoro unos 16 seg(aprox)
+
+
+ahora con mas threads :
+
+query ="perros"
+        nIptico = 10
+        imagenesEntotal = 50
+        descargasEnSimultaneo = 30
+        efectosEnSimultaneo = 5 
+        nIpticosEnSimultaneo = 5
+
+18:09:01.681 [Thread-1] - ----Descarga iniciada url:https://pixabay.com/get/57e1d14a4256ad14f6da8c7dda79367b163edee255556c48702778d19545cc5cba_1280.jpg
+18:10:09.877 [Thread-59] - concatenar terminado
+
+este demoro 1 min y 8 seg
+
+
+y haciendo lo misma ejecucion anterior pero con un solo efecto :
+efectosAplicados = ["contraste"], con nIpticosEnSimultaneo= 2 y 
+ imagenesEntotal = 20
+
+18:14:50.750 [Thread-1] - ----Descarga iniciada url:https://pixabay.com/get/57e1d14a4256ad14f6da8c7dda79367b163edee255556c48702778d19544c751b9_1280.jpg
+18:15:27.114 [Thread-26] - concatenar terminado
+
+demora 1 min y 23 seg aprox
